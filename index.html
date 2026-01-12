@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Polie - Language Survival Kit</title>
+    <meta name="description" content="Your ultimate survival kit for panic moments. Instant scenarios, carefully handpicked phrases, and offline support. No grammar tables, just survival.">
+    
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        polie: {
+                            dark: '#0f172a', /* Slate 900 */
+                            card: '#1e293b', /* Slate 800 */
+                            primary: '#3b82f6', /* Blue 500 */
+                            accent: '#0033D2', /* Green 500 */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+    </style>
+    
+</head>
+<body class="bg-polie-dark text-white min-h-screen flex flex-col font-sans selection:bg-polie-accent selection:text-black antialiased overflow-x-hidden">
+
+    <main class="flex-grow flex items-center justify-center relative">
+        
+        <div class="absolute top-0 left-0 w-96 h-96 bg-polie-primary/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-polie-accent/10 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 py-12 lg:py-24 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24 relative z-10">
+            
+            <div class="w-full lg:w-1/2 text-center lg:text-left space-y-8">
+                
+                
+                <img src="images/polielogo.png" 
+     alt="Polie Logo" 
+     class="h-16 sm:h-20 w-auto mb-6 mx-auto lg:mx-0 block">
+                
+                
+
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
+                    Don't just learn. <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">Hack the language!</span>
+                </h1>
+
+                <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+    Your ultimate <strong class="text-white">survival kit</strong>. 
+    Handle panic moments with instant scenarios and 
+    carefully handpicked phrases&words. </br>No WiFi required. No hidden fees.
+</p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    
+                    <a href="#" class="transition-transform hover:scale-105 duration-300">
+                        <img src="images/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg" 
+                             alt="Download on the App Store" 
+                             class="h-[54px] w-auto"> 
+                    </a>
+
+                    <div class="group relative flex items-center bg-slate-800 text-slate-500 px-6 rounded-xl cursor-not-allowed border border-slate-700/50 h-[54px]">
+                        <svg class="w-6 h-6 mr-3 grayscale opacity-50" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3,20.5V3.5C3,2.91,3.34,2.39,3.84,2.15L13.69,12L3.84,21.85C3.34,21.6,3,21.09,3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08,20.75,11.5,20.75,12C20.75,12.5,20.5,12.92,20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L3.84,2.15C3.84,2.15,6.05,2.66,6.05,2.66Z" />
+                        </svg>
+                        <div class="text-left grayscale opacity-50">
+                            <div class="text-[9px] uppercase font-bold tracking-wider leading-tight">Get it on</div>
+                            <div class="text-base font-bold leading-tight">Google Play</div>
+                        </div>
+                        
+                        <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-black text-xs font-bold py-1 px-3 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                            Coming Soon
+                            <div class="absolute bottom-[-4px] left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="w-full lg:w-1/2 flex justify-center lg:justify-end animate-float">
+                <img src="images/iPhoneScreenshots.png" 
+                     alt="Polie App Mockup" 
+                     class="w-full h-auto max-w-[600px] object-contain drop-shadow-2xl">
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="border-t border-slate-800 bg-slate-900/50 backdrop-blur-sm py-8 mt-auto">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+            <div>
+                &copy; <span id="year"></span> Polie. All rights reserved.
+            </div>
+            <div class="flex gap-6">
+                <a href="privacy.html" class="hover:text-white transition-colors">Terms & Privacy</a>
+                <a href="mailto:getpolie@gmail.com" class="hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

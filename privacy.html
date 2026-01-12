@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Privacy - Polie</title>
+    <meta name="robots" content="noindex"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        polie: {
+                            dark: '#0f172a', /* Slate 900 */
+                            card: '#1e293b', /* Slate 800 */
+                            primary: '#3b82f6', /* Blue 500 */
+                            accent: '#22c55e', /* Green 500 */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Metin içi listeler için stil */
+        ul.legal-list { list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem; }
+        ol.legal-list { list-style-type: decimal; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        /* Link hover efektleri */
+        .legal-link { color: #3b82f6; text-decoration: none; transition: color 0.2s; }
+        .legal-link:hover { color: #60a5fa; text-decoration: underline; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-polie-dark text-slate-400 min-h-screen flex flex-col font-sans antialiased selection:bg-polie-accent selection:text-black">
+
+    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/polielogo.png" alt="Polie Logo" class="h-8 w-auto">
+                <span class="text-xl font-bold text-white group-hover:text-polie-accent transition-colors">Polie</span>
+            </a>
+
+            <a href="index.html" class="text-sm font-medium text-white bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-all border border-slate-700">
+                &larr; Back to Home
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-6 py-12 max-w-4xl">
+        
+        <div class="bg-slate-800/30 border border-slate-800 rounded-2xl p-8 md:p-12 shadow-2xl backdrop-blur-sm">
+            
+            <section id="privacy-policy" class="space-y-8">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">Privacy Policy</h1>
+                    <p class="text-sm text-slate-500">Effective Date: January 10, 2026</p>
+                </div>
+
+                <div class="space-y-4">
+                    <p>This Privacy Policy explains how “Polie” (“we,” “us,” or “our”) processes personal data in connection with the Polie iOS application (the “App”).</p>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-xl font-semibold text-white">Who We Are</h2>
+                    <ul class="space-y-1">
+                        <li><strong>Developer:</strong> Özcan Çukurova</li>
+                        <li><strong>Contact email:</strong> <a href="mailto:getpolie@gmail.com" class="legal-link">getpolie@gmail.com</a></li>
+                        <li><strong>Postal address:</strong> Hauptstraße 73, 12159 Berlin</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-xl font-semibold text-white">Data We Collect</h2>
+                    <ul class="legal-list">
+                        <li><strong>Location Data (with your permission):</strong> When you allow location access, we process your approximate or precise location (depending on your iOS settings) to provide location‑relevant suggestions (e.g., weather‑based scenarios). We use “When In Use” authorization and do not collect background location.</li>
+                        <li><strong>Technical Data in Support Emails (optional):</strong> If you choose to send us a support email from within the App, your device model and iOS version may be included in the email body to help us diagnose issues.</li>
+                        <li><strong>No Analytics/Ads SDKs:</strong> We do not use analytics, crash reporting SDKs, or advertising SDKs at this time.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-xl font-semibold text-white">How We Use Your Data</h2>
+                    <ul class="legal-list">
+                        <li>Provide and personalize suggestions based on your location (e.g., weather/country‑aware scenarios).</li>
+                        <li>Respond to your inquiries and provide customer support (technical data included in your support emails).</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-xl font-semibold text-white">Legal Bases (GDPR)</h2>
+                    <ul class="legal-list">
+                        <li><strong>Consent:</strong> We process your location data based on your consent (iOS location permission). You can withdraw consent at any time via iOS Settings > Privacy & Security > Location Services > Polie.</li>
+                        <li><strong>Legitimate Interests / Contract:</strong> We process technical data you send via support email to respond to your request and maintain/improve the App.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-xl font-semibold text-white">Sharing and Disclosure</h2>
+                    <ul class="legal-list">
+                        <li><strong>Service Provider (Weather):</strong> We share your location (latitude/longitude) with WeatherAPI solely to obtain current weather data and related context for suggestions.
+                            <ul class="list-disc pl-5 mt-2 text-slate-500 text-sm">
+                                <li>Provider: WeatherAPI (api.weatherapi.com)</li>
+                                <li>Privacy Policy: <a href="https://www.weatherapi.com/privacy.aspx" target="_blank" class="legal-link">https://www.weatherapi.com/privacy.aspx</a></li>
+                                <li>Role: Data processor/service provider for weather retrieval</li>
+                            </ul>
+                        </li>
+                        <li><strong>Legal Requirements:</strong> We may disclose information if required by law, regulation, or legal process.</li>
+                        <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or asset sale, your information may be transferred subject to this Policy or a successor policy with equivalent protection.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-xl font-semibold text-white">International Data Transfers</h2>
+                    <p>WeatherAPI’s infrastructure may be located outside the EU/EEA. When we transfer personal data outside the EU/EEA, we rely on appropriate safeguards under GDPR (e.g., Standard Contractual Clauses) or ensure an adequacy decision applies.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-xl font-semibold text-white">Retention</h2>
+                    <ul class="legal-list">
+                        <li><strong>Location Data:</strong> We do not store your location on our servers. It is used transiently to fetch weather/context from WeatherAPI and to show suggestions in the App.</li>
+                        <li><strong>Support Emails:</strong> Emails you send to us (including device model and iOS version) may be retained in our mailbox for up to 12 months unless a longer period is required by law or to resolve a specific issue.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-xl font-semibold text-white">Security</h2>
+                    <p>We use TLS encryption in transit and apply data‑minimization. No method of transmission over the Internet is 100% secure, and we cannot guarantee absolute security.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-xl font-semibold text-white">Your Rights (GDPR)</h2>
+                    <p>You may have the right to request access, rectification, erasure, restriction, portability, and to object to processing, as well as the right to withdraw consent.</p>
+                    <p>To exercise your rights, contact: <a href="mailto:getpolie@gmail.com" class="legal-link">getpolie@gmail.com</a></p>
+                    <p>You also have the right to lodge a complaint with a supervisory authority in the EU/EEA, such as the Berlin Commissioner for Data Protection and Freedom of Information.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-xl font-semibold text-white">Children’s Privacy</h2>
+                    <p>The App is not directed to children under 13. If you believe a child under 13 has provided personal data to us, please contact us so we can take appropriate action.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-xl font-semibold text-white">Third‑Party Links</h2>
+                    <p>The App may contain links to external sites. We are not responsible for their content or privacy practices.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-xl font-semibold text-white">Changes to This Policy</h2>
+                    <p>We may update this Policy from time to time. We will post the updated version with a new “Effective Date.” If changes are material, we will provide additional notice within the App.</p>
+                </div>
+                
+                <div class="space-y-4 pt-4 border-t border-slate-700/50">
+                    <h2 class="text-xl font-semibold text-white">Contact</h2>
+                     <ul class="space-y-1">
+                        <li><strong>Developer:</strong> Özcan Çukurova</li>
+                        <li><strong>Email:</strong> <a href="mailto:getpolie@gmail.com" class="legal-link">getpolie@gmail.com</a></li>
+                        <li><strong>Address:</strong> Hauptstraße 73, 12159 Berlin</li>
+                    </ul>
+                </div>
+            </section>
+
+            <hr class="my-16 border-slate-700" />
+
+            <section id="terms-of-service" class="space-y-8">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">Terms of Service</h1>
+                    <p class="text-sm text-slate-500">Effective Date: January 10, 2026</p>
+                </div>
+
+                <p>These Terms of Service (“Terms”) govern your use of the Polie iOS application (the “App”). By using the App, you agree to these Terms.</p>
+
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">1. Service Description</h3>
+                        <p>Polie provides language‑learning content (phrases and words) and may display suggestions based on your location and local weather. Features may change over time.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">2. Eligibility</h3>
+                        <p>The App is not directed to children under 13. If you are under 13, you may not use the App. If you are between 13 and the age of majority in your jurisdiction, you must have your parent or legal guardian’s consent to use the App.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">3. Acceptable Use</h3>
+                        <p>You agree not to:</p>
+                        <ul class="legal-list">
+                            <li>Violate any applicable law or regulation;</li>
+                            <li>Interfere with or disrupt the App or its servers;</li>
+                            <li>Reverse engineer, decompile, or attempt to derive the source code of any part of the App except as permitted by law;</li>
+                            <li>Infringe any intellectual property or other rights.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">4. Intellectual Property</h3>
+                        <p>All content and materials in the App (including text, graphics, logos, and software) are owned by us or our licensors and are protected by intellectual property laws. We grant you a personal, non‑exclusive, non‑transferable, revocable license to use the App for your personal, non‑commercial purposes in accordance with these Terms.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">5. Third‑Party Services</h3>
+                        <p>The App may rely on third‑party services (e.g., WeatherAPI for weather data). Your use of such services may be subject to their own terms and policies. We are not responsible for third‑party content or services.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">6. Fees</h3>
+                        <p>The App does not currently offer paid subscriptions or in‑app purchases. If we introduce paid features in the future, we will update these Terms and provide applicable pricing and refund information (including App Store rules).</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">7. Disclaimer</h3>
+                        <p>The App is provided “as is” and “as available,” without warranties of any kind, whether express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non‑infringement.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">8. Limitation of Liability</h3>
+                        <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, consequential, special, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, or goodwill, resulting from your use of the App.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">9. Termination</h3>
+                        <p>We may suspend or terminate your access to the App at any time, with or without notice, if we believe you have violated these Terms or for any other reason.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">10. Governing Law and Jurisdiction</h3>
+                        <p>These Terms are governed by the laws of Germany, without regard to its conflict‑of‑law principles. If you are a consumer in the EU/EEA, any mandatory consumer protection provisions of your country of residence also apply. The courts of Berlin, Germany shall have jurisdiction, unless mandatory law provides otherwise.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">11. Changes to the Terms</h3>
+                        <p>We may update these Terms from time to time. The updated Terms will be posted with a new “Effective Date.” If changes are material, we will provide additional notice within the App.</p>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-700/50">
+                        <h3 class="text-lg font-semibold text-white mb-2">12. Contact</h3>
+                         <ul class="space-y-1">
+                            <li><strong>Developer:</strong> Özcan Çukurova</li>
+                            <li><strong>Email:</strong> <a href="mailto:getpolie@gmail.com" class="legal-link">getpolie@gmail.com</a></li>
+                            <li><strong>Address:</strong> Hauptstraße 73, 12159 Berlin</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="border-t border-slate-800 bg-slate-900/50 backdrop-blur-sm py-8 mt-auto">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+            <div>
+                &copy; <span id="year"></span> Polie. All rights reserved.
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="text-white font-medium cursor-default">Terms & Privacy</a>
+                <a href="mailto:getpolie@gmail.com" class="hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
