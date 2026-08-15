@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Almanca Flashcards</title>
+    <title>Deutsch Karteikarten</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Blurlu alan için geçiş efekti */
@@ -18,7 +18,7 @@
         
         <!-- Yükleniyor Ekranı -->
         <div id="loading" class="absolute inset-0 bg-white/80 z-50 flex items-center justify-center">
-            <p class="text-gray-500 font-semibold animate-pulse">Kart getiriliyor...</p>
+            <p class="text-gray-500 font-semibold animate-pulse">Wird geladen...</p>
         </div>
 
         <!-- Kart İçeriği -->
@@ -26,7 +26,7 @@
             
             <!-- Type Chip -->
             <div id="type-chip" class="text-sm font-bold px-4 py-1 rounded-full mb-6 bg-blue-100 text-blue-700 uppercase tracking-wider">
-                Type
+                Typ
             </div>
 
             <!-- German Text -->
@@ -36,14 +36,14 @@
 
             <!-- English & Example (Blurlu Alan) -->
             <div id="reveal-area" class="reveal-content is-blurred bg-gray-100 rounded-xl p-6 w-full mb-8 shadow-inner" onclick="removeBlur()">
-                <div class="text-xs text-gray-400 mb-1 uppercase tracking-widest font-semibold" id="click-hint">Görmek için tıkla</div>
+                <div class="text-xs text-gray-400 mb-1 uppercase tracking-widest font-semibold" id="click-hint">Zum Aufdecken klicken</div>
                 <p id="english-text" class="text-2xl font-medium text-indigo-600 mb-3"></p>
                 <p id="example-text" class="text-lg text-gray-600 italic"></p>
             </div>
 
             <!-- Stars (Popularity) -->
             <div class="mb-4">
-                <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold mb-2">Bilinirlik (Popularity)</p>
+                <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold mb-2">Bekanntheit</p>
                 <div class="flex space-x-2" id="star-container">
                     <!-- Yıldızlar JS ile doldurulacak -->
                 </div>
@@ -51,20 +51,19 @@
 
             <!-- Hide Button -->
             <button onclick="hideCard()" class="mt-4 text-sm text-red-400 hover:text-red-600 underline">
-                Bunu bir daha gösterme
+                Diese Karte nicht mehr anzeigen
             </button>
         </div>
 
         <!-- Sticky Continue Button -->
         <div class="fixed bottom-0 w-full max-w-md bg-white border-t border-gray-100 p-4 pb-6">
             <button onclick="loadRandomCard()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl shadow-lg transition transform active:scale-95 text-lg">
-                Sıradaki (Continue)
+                Weiter
             </button>
         </div>
     </div>
 
     <script>
-        // LÜTFEN APPS SCRIPT URL'NİZİ BURAYA YAPIŞTIRIN
         const API_URL = "https://script.google.com/macros/s/AKfycbxiq-oZ9L2TVbUqRpd4Vbvm-SIyg6QLHj_aASIt232jAPJ4_H1LTdfT78FFAhDN2O_5RA/exec"; 
         
         let currentRow = null;
@@ -85,6 +84,8 @@
                 const data = await response.json();
                 
                 if (data.error) {
+                    // Eğer backend'den (Apps Script) Türkçe hata gelirse onu da alert eder. 
+                    // İsterseniz backend'deki "Gösterilecek kart kalmadı!" metnini de "Keine Karten mehr verfügbar!" olarak değiştirebilirsiniz.
                     alert(data.error);
                     showLoading(false);
                     return;
@@ -93,7 +94,7 @@
                 currentRow = data.row;
                 populateCard(data);
             } catch (err) {
-                alert("Bir hata oluştu. Bağlantınızı kontrol edin.");
+                alert("Ein Fehler ist aufgetreten. Bitte überprüfe deine Verbindung.");
             }
             showLoading(false);
         }
@@ -151,12 +152,12 @@
             
             // Arka planda sheet'i güncelle
             fetch(`${API_URL}?action=update_popularity&row=${currentRow}&rating=${rating}`)
-                .catch(err => console.error("Yıldız güncellenemedi", err));
+                .catch(err => console.error("Sterne konnten nicht aktualisiert werden", err));
         }
 
         async function hideCard() {
             if(!currentRow) return;
-            if(confirm("Bu kelime bir daha gösterilmeyecek. Emin misiniz?")) {
+            if(confirm("Dieses Wort wird nicht mehr angezeigt. Bist du sicher?")) {
                 showLoading(true);
                 await fetch(`${API_URL}?action=hide_card&row=${currentRow}`);
                 loadRandomCard(); // Yeni karta geç
