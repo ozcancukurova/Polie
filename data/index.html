@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Almanca Flashcards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Blurlu alan için geçiş efekti */
+        .reveal-content { transition: filter 0.3s ease; }
+        .is-blurred { filter: blur(8px); cursor: pointer; user-select: none; }
+    </style>
+</head>
+<body class="bg-gray-50 flex justify-center min-h-[100dvh]">
+
+    <!-- Ana Konteyner (Mobil genişliğinde) -->
+    <div class="w-full max-w-md bg-white min-h-[100dvh] shadow-xl flex flex-col relative">
+        
+        <!-- Yükleniyor Ekranı -->
+        <div id="loading" class="absolute inset-0 bg-white/80 z-50 flex items-center justify-center">
+            <p class="text-gray-500 font-semibold animate-pulse">Kart getiriliyor...</p>
+        </div>
+
+        <!-- Kart İçeriği -->
+        <div class="flex-grow flex flex-col items-center justify-center p-6 text-center pb-24">
+            
+            <!-- Type Chip -->
+            <div id="type-chip" class="text-sm font-bold px-4 py-1 rounded-full mb-6 bg-blue-100 text-blue-700 uppercase tracking-wider">
+                Type
+            </div>
+
+            <!-- German Text -->
+            <h1 id="german-text" class="text-4xl font-extrabold text-gray-800 mb-8 leading-tight">
+                ...
+            </h1>
+
+            <!-- English & Example (Blurlu Alan) -->
+            <div id="reveal-area" class="reveal-content is-blurred bg-gray-100 rounded-xl p-6 w-full mb-8 shadow-inner" onclick="removeBlur()">
+                <div class="text-xs text-gray-400 mb-1 uppercase tracking-widest font-semibold" id="click-hint">Görmek için tıkla</div>
+                <p id="english-text" class="text-2xl font-medium text-indigo-600 mb-3"></p>
+                <p id="example-text" class="text-lg text-gray-600 italic"></p>
+            </div>
+
+            <!-- Stars (Popularity) -->
+            <div class="mb-4">
+                <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold mb-2">Bilinirlik (Popularity)</p>
+                <div class="flex space-x-2" id="star-container">
+                    <!-- Yıldızlar JS ile doldurulacak -->
+                </div>
+            </div>
+
+            <!-- Hide Button -->
+            <button onclick="hideCard()" class="mt-4 text-sm text-red-400 hover:text-red-600 underline">
+                Bunu bir daha gösterme
+            </button>
+        </div>
+
+        <!-- Sticky Continue Button -->
+        <div class="fixed bottom-0 w-full max-w-md bg-white border-t border-gray-100 p-4 pb-6">
+            <button onclick="loadRandomCard()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl shadow-lg transition transform active:scale-95 text-lg">
+                Sıradaki (Continue)
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // LÜTFEN APPS SCRIPT URL'NİZİ BURAYA YAPIŞTIRIN
+        const API_URL = "https://script.google.com/macros/s/AKfycbxiq-oZ9L2TVbUqRpd4Vbvm-SIyg6QLHj_aASIt232jAPJ4_H1LTdfT78FFAhDN2O_5RA/exec"; 
+        
+        let currentRow = null;
+
+        // Renk paleti eşleştirmeleri
+        const typeColors = {
+            'Name': 'bg-blue-100 text-blue-700',
+            'Verb': 'bg-red-100 text-red-700',
+            'Prefix': 'bg-green-100 text-green-700',
+            'Phrase': 'bg-purple-100 text-purple-700',
+            'Other': 'bg-gray-200 text-gray-700'
+        };
+
+        async function loadRandomCard() {
+            showLoading(true);
+            try {
+                const response = await fetch(`${API_URL}?action=get_card`);
+                const data = await response.json();
+                
+                if (data.error) {
+                    alert(data.error);
+                    showLoading(false);
+                    return;
+                }
+
+                currentRow = data.row;
+                populateCard(data);
+            } catch (err) {
+                alert("Bir hata oluştu. Bağlantınızı kontrol edin.");
+            }
+            showLoading(false);
+        }
+
+        function populateCard(data) {
+            // Verileri DOM'a yaz
+            document.getElementById('german-text').innerText = data.german;
+            document.getElementById('english-text').innerText = data.english;
+            
+            const exampleEl = document.getElementById('example-text');
+            if(data.example && data.example.trim() !== "") {
+                exampleEl.innerText = `"${data.example}"`;
+                exampleEl.style.display = 'block';
+            } else {
+                exampleEl.style.display = 'none';
+            }
+
+            // Çip rengini ayarla
+            const chip = document.getElementById('type-chip');
+            chip.innerText = data.type || "Other";
+            chip.className = `text-sm font-bold px-4 py-1 rounded-full mb-6 uppercase tracking-wider ${typeColors[data.type] || typeColors['Other']}`;
+
+            // Blur'u geri getir
+            const revealArea = document.getElementById('reveal-area');
+            revealArea.classList.add('is-blurred');
+            document.getElementById('click-hint').style.display = 'block';
+
+            // Yıldızları çiz
+            renderStars(data.popularity);
+        }
+
+        function removeBlur() {
+            const revealArea = document.getElementById('reveal-area');
+            revealArea.classList.remove('is-blurred');
+            document.getElementById('click-hint').style.display = 'none';
+        }
+
+        function renderStars(currentRating) {
+            const container = document.getElementById('star-container');
+            container.innerHTML = '';
+            
+            for (let i = 1; i <= 5; i++) {
+                const starColor = i <= currentRating ? 'text-yellow-400' : 'text-gray-300';
+                container.innerHTML += `
+                    <svg onclick="rateCard(${i})" class="w-8 h-8 cursor-pointer transition transform hover:scale-110 ${starColor}" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                `;
+            }
+        }
+
+        function rateCard(rating) {
+            renderStars(rating); // Ekranda hemen göster
+            if(!currentRow) return;
+            
+            // Arka planda sheet'i güncelle
+            fetch(`${API_URL}?action=update_popularity&row=${currentRow}&rating=${rating}`)
+                .catch(err => console.error("Yıldız güncellenemedi", err));
+        }
+
+        async function hideCard() {
+            if(!currentRow) return;
+            if(confirm("Bu kelime bir daha gösterilmeyecek. Emin misiniz?")) {
+                showLoading(true);
+                await fetch(`${API_URL}?action=hide_card&row=${currentRow}`);
+                loadRandomCard(); // Yeni karta geç
+            }
+        }
+
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'flex' : 'none';
+        }
+
+        // Sayfa açıldığında ilk kartı yükle
+        window.onload = loadRandomCard;
+    </script>
+</body>
+</html>
